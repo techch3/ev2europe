@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="20px" height="20px" viewBox="0 0 20 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>ic_top</title>
+    <defs>
+        <filter id="filter-1">
+            <feColorMatrix in="SourceGraphic" type="matrix" values="0 0 0 0 1.000000 0 0 0 0 1.000000 0 0 0 0 1.000000 0 0 0 1.000000 0"></feColorMatrix>
+        </filter>
+    </defs>
+    <g id="UI" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" opacity="0.695452009">
+        <g filter="url(#filter-1)" id="箭头">
+            <g transform="translate(10.000000, 10.000000) scale(1, -1) translate(-10.000000, -10.000000) " id="箭头备份-2" fill-rule="nonzero">
+                <rect id="ic_arrow_侧边" fill="#000000" opacity="0" x="0" y="0" width="20" height="20"></rect>
+                <path d="M9.10233824,14.1090209 C6.7919459,11.7193039 4.48164903,9.32960278 2.17361176,6.93994942 C1.22136578,5.95597358 2.76758398,4.48906412 3.72212139,5.47759099 C5.7785157,7.60427156 7.83265041,9.73098396 9.88904472,11.8564711 C12.0157094,9.7196064 14.1446655,7.58274172 16.271346,5.44471541 C17.2394729,4.4720853 18.7857229,5.93896293 17.8187577,6.90821956 C15.4301864,9.3092823 13.0405171,11.7091198 10.650832,14.1090368 C10.2540814,14.5058033 9.4945219,14.5160033 9.10235416,14.1090368 L9.10233824,14.1090209 Z" id="路径" fill="#FFFFFF"></path>
+            </g>
+        </g>
+    </g>
+</svg>
