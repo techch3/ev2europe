@@ -9,10 +9,6 @@
     <link rel="dns-prefetch" href="//video.dsmp.voyah.com.cn">
     <link rel="dns-prefetch" href="//pic.dsmp.voyah.com.cn">
   <!-- Link Swiper's CSS -->
-  <link href="css/swiper.min.css" rel="stylesheet" type="text/css" />
-  <link href="./css/common.css_rev=1633711052850" rel="stylesheet" type="text/css">
-  <link href="css/animate.min.css" rel="stylesheet" type="text/css" />
-  <link href="./css/index.css_rev=1633711052850" rel="stylesheet" type="text/css">
     <script src="//pingjs.qq.com/h5/stats.js?v2.0.4" name="MTAH5" sid="500722461"></script>
   <script src="js/jquery3_5.js"></script>
   <script src="js/swiper.min.js"></script>
@@ -813,6 +809,470 @@ a,a:focus,a:hover,a:link,a:visited{text-decoration:none;color:#fff}
     </video>
     <div class="dialog-wrapper"></div>
   </div>
- 
+ <body class="index">
+  <!-- 顶部导航 -->
+<div class="header animatemove" id="jsheadercon">
+  <div class="nav_left">
+      <a href="index.html" class="logo"></a>
+      <ul class="menu-list">
+      </ul>
+  </div>
+  <div class="nav_right">
+      <section id= "hide" class="loginH">
+          <i class="icon_phone"></i>
+          <span><a>登录</a></span>
+      </section>
+	  <!-- 登录之后展示 -->
+	  <section id= "show">
+	      <i class="icon_login">
+			  <img id="imgA" src="index.html" onerror="javascript:this.src= '../resources/images/login/userIcon.png'">
+		  </i>
+	      <span class="loginUser">岚图用户<span class="phoneLogin"></span></span>
+	  </section>
+	  
+	  <!-- 登陆下拉框 -->
+	  <div class="Ulhover">
+	  	  <ul class="uList">
+	  		  <li>欢迎，岚图用...</li>
+	  		  <li class="phoneLogin"></li>
+	  		  <li class="outLogin">退出登录</li>
+	  	  </ul>
+	  </div>
+	  
+      <!-- <span class="btn btn-blue-reset jsBtnReset" data-name="岚图导航菜单 - 立即预订"></span> -->
+  </div>
+  
+</div>
+<!-- cdp埋点 -->
+<script src="js/cdp.js?rev=@@hash"></script>
+<script type="text/javascript">
+	$(document).ready(function () {
+		//判断是否登陆
+		if( localStorage.getItem("phone") != null ){
+			$("#hide").hide()
+			$("#show").show()
+			//手机号赋值
+			$(".phoneLogin").html(localStorage.getItem("phone").replace(/(\d{3})\d{4}(\d{4})/, '$1****$2'));
+		}else{
+			$("#hide").show()
+			$("#show").hide()
+		}
+		
+		//判断图片
+		$("#imgA").attr("src", localStorage.getItem("userImg"));
+
+	   //登陆成功后
+	   $(".loginUser").mouseover(function () {
+		  $(".Ulhover").slideDown('fast').show()
+		  $(".Ulhover").hover(function() {
+		  }, function(){   
+		      $(".Ulhover").slideUp('slow');
+		  }); 
+	   })
+	   
+	   //退出登录
+	   $(".outLogin").click(function () {
+		   window.linkflow.sendEvent({
+		     h5_click: {
+		       user_id: localStorage.getItem("userId"),
+		   	   user_mobile: localStorage.getItem("phone"),
+		   	   user_nickname: localStorage.getItem("userName"),
+		   	   source:'webpc',
+		   	   click_name: '退出登陆',
+		   	   location_page: '官网PC-' + document.title + '-顶部导航',
+		     }
+		   }, function () {
+		       console.log("埋点成功")
+		       localStorage.removeItem("userId")
+			   localStorage.removeItem("phone")
+			   localStorage.removeItem("userName")
+			   localStorage.removeItem("userImg")
+			   localStorage.removeItem("cookie")
+		       location.href = 'index.html'
+		   }, function () {
+		       console.log("埋点失败")
+		       localStorage.removeItem("userId")
+		       localStorage.removeItem("phone")
+		       localStorage.removeItem("userName")
+		       localStorage.removeItem("userImg")
+			   localStorage.removeItem("cookie")
+		       location.href = 'index.html'
+		   });
+	   })
+	   
+	   //登录埋点
+	   $(".loginH").click(function () {
+	   		window.linkflow.sendEvent({
+	   		  h5_click: {
+	   		       user_id: localStorage.getItem("userId"),
+	   			   user_mobile: localStorage.getItem("phone"),
+	   			   user_nickname: localStorage.getItem("userName"),
+	   			   source:'webpc',
+	   			   click_name: '登陆',
+	   			   location_page: '官网PC-' + document.title + '-顶部导航',
+	   		  }
+	   		}, function () {
+	   		    console.log("埋点成功")
+	   		    window.location.href = 'login.html';
+	   		}, function () {
+	   		    console.log("埋点失败")
+	   		    window.location.href = 'login.html';
+	   		});
+	   })
+
+	});
+</script>
+  <!-- ----- 第一屏 start ----- -->
+  <div class="screen-01">
+    <div class="index_logo">
+      <img class="logo" src="resources/images/index/index_logo.png" alt="">
+    </div>
+    <div class="btn-box">
+      <a class="btn reset animatemove jsBtnQy" id="jsBtnFade2" href="javascript:void(0);">立即选购</a>
+      <a href="free.html" class="btn free animatemove" id="jsBtnFade1">探索岚图FREE</a>
+    </div>
+    <video id="video1" autoplay loop muted preload="auto">
+    </video>
+    <div class="dialog-wrapper"></div>
+  </div>
+   <!-- ----- 第一屏 end ----- -->
+
+   <!-- ----- 第二屏 start ----- -->
+   <div class="screen-06 backgroundimg6">
+    <div class="s6_main">
+      <div class="nav_wrapper">
+        <div class="nav tap" id="navOne">4大限时尊享购车权益</div>
+        <div class="nav" id="navTwo">6大服务无忧保障</div>
+      </div>
+      <div class="nav_main">
+        <div class="navOne">
+          <div class="nmItem">
+            <img class="nmiImg" src="resources/images/index/qy_icon/ic_equity8_1.svg" alt="">
+            <div class="nmiText">一年免费充电</div>
+          </div>
+          <div class="nmItem">
+            <img class="nmiImg" src="resources/images/ic_upkeep@3x.png" alt="">
+            <div class="nmiText">一年免费保养</div>
+          </div>
+          <div class="nmItem">
+            <img class="nmiImg" src="resources/images/index/qy_icon/ic_equity8_3.svg" alt="">
+            <div class="nmiText">2年0息购车金融方案</div>
+          </div>
+          <div class="nmItem">
+            <img class="nmiImg" src="resources/images/index/qy_icon/ic_equity8_2.svg" alt="">
+            <div class="nmiText">
+              <p>专属豪华套装</p>
+              <p>随心升级</p>
+            </div>
+          </div>
+        </div>
+        <div class="navTwo">
+          <div class="nmItem">
+            <img class="nmiImg" src="resources/images/index/qy_icon/ic_equity6_1.svg" alt="">
+            <div class="nmiText">终身整车质保</div>
+          </div>
+          <div class="nmItem">
+            <img class="nmiImg" src="resources/images/index/qy_icon/ic_equity6_2.svg" alt="">
+            <div class="nmiText">终身三电质保</div>
+          </div>
+          <div class="nmItem">
+            <img class="nmiImg" src="resources/images/index/qy_icon/ic_equity6_3.svg" alt="">
+            <div class="nmiText">终身免费车机<br />流量</div>
+          </div>
+          <div class="nmItem">
+            <img class="nmiImg" src="resources/images/index/qy_icon/ic_equity6_4.svg" alt="">
+            <div class="nmiText">终身免费OTA<br />升级</div>
+          </div>
+          <div class="nmItem">
+            <img class="nmiImg" src="resources/images/index/qy_icon/ic_equity6_5.svg" alt="">
+            <div class="nmiText">终身免费道路<br />救援</div>
+          </div>
+          <div class="nmItem">
+            <img class="nmiImg" src="resources/images/index/qy_icon/ic_equity6_6.svg" alt="">
+            <div class="nmiText">免费充电桩及<br />安装服务</div>
+          </div>
+        </div>
+      </div>
+      <div class="choose jsBtnQy" data-name="岚图首页 - 权益 - 立即选购">立即选购</div>
+      <div class="tips">
+        <div class="tip1">*上述专属权益适用于在2021年10月1日(含)-2021年12月31日(含)期间完成岚图FREE认购的用户。</div>
+        <div class="tip2">*购车及相关服务的介绍性文件，详情可进入官方APP或小程序了解。</div>
+      </div>
+    </div>
+   
+  </div>
+  <!-- ----- 第二屏 end ----- -->
+
+  <!-- ----- 第三屏 start ----- -->
+  <!-- <div class="screen-07 backgroundimg7">
+    <div class="s7_info">
+      <div class="s7_info_t1">让汽车驱动梦想，为美好生活赋能</div>
+      <div class="s7_info_t2">为用户构建真正零焦虑的美妙出行和现代格调的美好生活</div>
+    </div>
+  </div> -->
+  <div class="screen-04 backgroundimg4">
+    <a href="activity1.html" class="ui-btn">查看详情</a>
+  </div>
+  <!-- ----- 第三屏 end ----- -->
+
+  <!-- ----- 第四屏 start ----- -->
+  <div class="screen-08">
+    <div class="s8_title">品牌历程</div>
+    <div class="swiper_wraper">
+      <div class="swiper-container" id="swiper08">
+        <div class="swiper-wrapper" id="free-swiper">
+          <div class="swiper-slide">
+            <img class="slide_bg" src="resources/images/index/b1.png" alt="">
+            <div class="footer_wraper">
+              <div class="fw_t">岚图FREE量产车下线</div>
+              <div class="fw_d">2021.06.30</div>
+            </div>
+          </div>
+          <div class="swiper-slide">
+            <img class="slide_bg" src="resources/images/index/b2.png" alt="">
+            <div class="footer_wraper">
+              <div class="fw_t">岚图FREE正式上市</div>
+              <div class="fw_d">2021.06.19</div>
+            </div>
+          </div>
+          <div class="swiper-slide">
+            <img class="slide_bg" src="resources/images/index/b3.png" alt="">
+            <div class="footer_wraper">
+              <div class="fw_t">岚图FREE开启全国试驾</div>
+              <div class="fw_d">2021.05.19</div>
+            </div>
+          </div>
+          <div class="swiper-slide">
+            <img class="slide_bg" src="resources/images/index/b4.png" alt="">
+            <div class="footer_wraper">
+              <div class="fw_t">岚图FREE开启预售</div>
+              <div class="fw_d">2021.03.31</div>
+            </div>
+          </div>
+          <div class="swiper-slide">
+            <img class="slide_bg" src="resources/images/index/b5.png" alt="">
+            <div class="footer_wraper">
+              <div class="fw_t">岚图空间5城同开</div>
+              <div class="fw_d">2021.03.27</div>
+            </div>
+          </div>
+          <div class="swiper-slide">
+            <img class="slide_bg" src="resources/images/index/b6.png" alt="">
+            <div class="footer_wraper">
+              <div class="fw_t">岚图FREE全球首发亮相</div>
+              <div class="fw_d">2020.12.18</div>
+            </div>
+          </div>
+          <div class="swiper-slide">
+            <img class="slide_bg" src="resources/images/index/b7.png" alt="">
+            <div class="footer_wraper">
+              <div class="fw_t">岚图FREE预生产下线</div>
+              <div class="fw_d">2020.11.25</div>
+            </div>
+          </div>
+          <div class="swiper-slide">
+            <img class="slide_bg" src="resources/images/index/b8.png" alt="">
+            <div class="footer_wraper">
+              <div class="fw_t">北京车展发布iFree<br />及ESSA架构</div>
+              <div class="fw_d">2020.09.26</div>
+            </div>
+          </div>
+          <div class="swiper-slide">
+            <img class="slide_bg" src="resources/images/index/b9.png" alt="">
+            <div class="footer_wraper">
+              <div class="fw_t">品牌及战略及iLand发布</div>
+              <div class="fw_d">2020.07.29</div>
+            </div>
+          </div>
+          <div class="swiper-slide">
+            <img class="slide_bg" src="resources/images/index/b10.png" alt="">
+            <div class="footer_wraper">
+              <div class="fw_t">品牌及LOGO发布</div>
+              <div class="fw_d">2020.07.17</div>
+            </div>
+          </div>
+        </div>
+        <!-- swiper 分页 及左右箭头 -->
+        <div class="swiper-button-next" id="swiper08-next"></div>
+        <div class="swiper-button-prev" id="swiper08-pre"></div>
+        <!-- <div class="swiper-pagination" id="swiper08-pagination"></div> -->
+      </div>
+    </div>
+  
+  </div>
+  <!-- ----- 第四屏 end ----- -->
+
+  <!-- <div class="screen-02">
+    <div class="swipincon" id="jsSwiper1">
+      <div class="swiper-wrapper">
+      </div>
+      <div class="swiper-button-next mypicnext"></div>
+      <div class="swiper-button-prev mypicpre"></div>
+      <div class="swiper-pagination"></div>
+    </div>
+    <div class="swiin" id="jsControl">
+        </div>
+  </div> -->
+  <!-- <div class="screen-03 backgroundimg3">
+    <div class="title animatemove" id="jsTitle3"></div>
+    <div class="subtitle animatemove" id="jsSubTitle3">岚图首款概念车</div>
+    <div class="msg animatemove" id="jsMsg3">我们将其定义为移动智慧小岛</div>
+    <a href="iland.html" class="btn btn_iland animatemove" id="jsBtn3"></a>
+  </div> -->
+
+  <div class="screen-05 backgroundimg5">
+    <div class="titles animatemove" id="jsTitle5">预订岚图FREE</div>
+    <div class="subtitles animatemove" id="jsSubTitle5"> 即享专属权益及尊荣</div>
+	<div class="erm" id="jsMsg4">
+		<img src="resources/images/login/loginer.png" class="imger">
+		<p>岚图汽车APP</p>
+		<span>即刻下载</span>
+	</div>
+    <div class="developer">
+      <p>开发者：东风汽车集团股份有限公司岚图汽车科技分公司<a target="_blank" href="https://m.voyah.com.cn/activity/common/privacy-app.html">法律声明与隐私政策</a></p>
+    </div>
+  </div>
+
+  <!--页脚-->
+<div class="ifooter">
+    <div class="animatemove" id="jsifooter">
+		<div class="disFlex">	
+			<!-- <div class="disLeft">
+				<a class="btnHref">
+					APP下载
+					<div class="hoverPhone">
+					  <img src="./resources/images/user/qrcode_pho.png" alt="">
+					</div>
+				</a>
+				<a href="join-us.html">加入我们</a>
+				<a href="free.html">岚图FREE</a>
+				<a href="userser.html">用户服务(钣喷)中心招募</a>
+			</div> -->
+			<div class="disRight">
+				<!-- <div class="dismain">
+					<div class="imgphone"></div>
+					<div class="hoverimg toPho">
+					  <img src="./resources/images/user/qrcode_pho.png" alt="">
+					</div>
+				</div> -->
+				<div class="dismain">
+					<div class="imgxcx"></div>
+					<div class="dm_tip">
+						<div class="t1">岚图小程序</div>
+						<div class="t2">*扫码加入</div>
+					</div>
+					<div class="hoverimg">
+					  <img src="resources/images/index/qrcode_de.png" alt="">
+					</div>
+				</div>
+				<div class="dismain">
+					<div class="imgwx"></div>
+					<div class="dm_tip">
+						<div class="t1">岚图公众号</div>
+						<div class="t2">*扫码关注</div>
+					</div>
+					<div class="hoverimg">
+					  <img src="resources/images/index/wecode_de.png" alt="">
+					</div>
+				</div>
+				<div class="dismain">
+					<a href="http://www.weibo.com/p/1005057351024207?from=qrcode&frwbqr=53" target="_blank">
+						<div class="imgwb"></div>
+					</a>
+					<div class="dm_tip">
+						<div class="t1">岚图微博</div>
+						<div class="t2">*点击关注</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="footer">
+			<div class="left">
+				<div class="img">
+						<img src="resources/images/logo_footer.png" alt="">
+				</div>
+				<p>岚图汽车科技公司</p>
+				<p>经营许可证号：<a href="https://beian.miit.gov.cn/" target="_blank">鄂ICP备2020020942号-3</a>&nbsp;&nbsp;<a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=42010502001349" target="_blank"><img class="badge" src="resources/images/badge.png" />鄂公网安备 42010502001349号</a></p>
+				<p>Copyright©2021 voyah.com.cn All rights reserved.</p>
+		</div>
+		<div class="right">
+				<section>
+						<i></i>
+						<span>400-888-8488</span>
+				</section>
+				<p>voyah-callcenter@dfmc.com.cn</p>
+		</div>
+		</div>
+       
+    </div>
+</div>
+  <!-- <ul class="sidebar-cont" id="suspendAnimate">
+    <li class="miniprogram-box">
+        <a class="miniprogram"></a>
+        <div class="h-miniprogram h-box">
+            <img src="./resources/images/qrcode_ce.png" alt="">
+            <p>*扫码加入岚图大家庭</p>
+        </div>
+    </li>
+    <li class="wechat-box">
+        <a class="wechat"></a>
+        <div class="h-wechat h-box">
+            <img src="./resources/images/wecode_ce.png" alt="">
+            <p>*扫码加入岚图大家庭</p>
+        </div>
+    </li>
+    <li><a class="weibo" href="http://www.weibo.com/p/1005057351024207?from=qrcode&frwbqr=53" target="_blank"></a></li>
+    <li><a class="up" id="up"></a></li>
+</ul> -->
+
+<div class="slider_wrapper" id="suspendAnimate">
+    <div class="slider_item">
+        <div class="si_main">
+            <img class="icon" src="resources/images/sidebar/ic_phone.svg" alt="">
+            <div class="info">电话咨询</div>
+        </div>
+        <div class="phone_infowindow">
+            <div class="pi_txt1">*官方热线</div>
+            <div class="pi_txt2">400-888-8488</div>
+        </div>
+    </div>
+    <div class="slider_item">
+        <div class="si_main">
+            <img class="icon" src="resources/images/sidebar/ic_applets.svg" alt="">
+            <div class="info">小程序</div>
+        </div>
+        <div class="miniprogram_infowindow">
+            <img class="mi_img" src="resources/images/qrcode_ce.png" alt="">
+            <p class="mi_info">*扫码加入岚图大家庭</p>
+        </div>
+    </div>
+    <div class="slider_item">
+        <div class="si_main">
+            <img class="icon" src="resources/images/sidebar/ic_WeChat.svg" alt="">
+            <div class="info">公众号</div>
+        </div>
+       
+        <div class="miniprogram_infowindow">
+            <img class="mi_img" src="resources/images/wecode_ce.png" alt="">
+            <p class="mi_info">*扫码加入岚图大家庭</p>
+        </div>
+    </div>
+    <div class="slider_item slider_item_weibo">
+        <div class="si_main">
+            <a class="slider_coer" href="http://www.weibo.com/p/1005057351024207?from=qrcode&frwbqr=53" target="_blank"></a>
+            <img class="icon" src="resources/images/sidebar/ic_microblog.svg" alt="">
+            <div class="info">官网微博</div>
+        </div>
+       
+    </div>
+    <div class="slider_item" id="up">
+        <div class="up_icon">
+            <img class="icon" src="resources/images/sidebar/ic_top.svg" alt="">
+        </div>
+    </div>
+</div>
+</body>
+
+</html>
 </body>
 </html>
